@@ -98,19 +98,20 @@ cat ~/.openclaw/openclaw.json | python3 -c \
 Copy both skill files into the OpenClaw workspace:
 
 ```bash
-# Create the skills directory if it doesn't exist
-mkdir -p ~/.openclaw/workspace/skills/lobsterclawe
+# Create the skill folders if they don't exist
+mkdir -p ~/.openclaw/workspace/skills/lobsterclawe/recipe-scraper
+mkdir -p ~/.openclaw/workspace/skills/lobsterclawe/ingredients-scraper
 
-# Copy both skills
-cp SKILL-recipes.md ~/.openclaw/workspace/skills/lobsterclawe/
-cp SKILL-grocery.md ~/.openclaw/workspace/skills/lobsterclawe/
+# Copy both skills from this repo
+cp openclaw-skill/recipe-scraper/SKILL.md ~/.openclaw/workspace/skills/lobsterclawe/recipe-scraper/SKILL.md
+cp openclaw-skill/ingredients-scraper/SKILL.md ~/.openclaw/workspace/skills/lobsterclawe/ingredients-scraper/SKILL.md
 ```
 
 Verify they're in place:
 
 ```bash
-ls ~/.openclaw/workspace/skills/lobsterclawe/
-# Should show: SKILL-recipes.md  SKILL-grocery.md
+find ~/.openclaw/workspace/skills/lobsterclawe -maxdepth 2 -name SKILL.md
+# Should show one SKILL.md under recipe-scraper and one under ingredients-scraper
 ```
 
 Restart the gateway so it picks up the new skills:
